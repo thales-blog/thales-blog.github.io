@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>模块开发 | Magic conch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="目的把一些常用的公共组件单独拿出来做成npm组件包，可以直接下载使用 好处 一套组件，多个项目用，减少重复开发 组件开发和项目开发可以同步进行 组件可以多个版本轻松升降级  结构   文件 描述      vue.config.js vue-cli配置   .npmignore 发包过滤文件   package.json npm包文件，发布公共组件来说，这里非常重要   packages 模块源文">
+<meta name="keywords" content="npm vue module publish">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模块开发">
+<meta property="og:url" content="https://thales-blog.github.io/2019/09/03/module/index.html">
+<meta property="og:site_name" content="Magic conch">
+<meta property="og:description" content="目的把一些常用的公共组件单独拿出来做成npm组件包，可以直接下载使用 好处 一套组件，多个项目用，减少重复开发 组件开发和项目开发可以同步进行 组件可以多个版本轻松升降级  结构   文件 描述      vue.config.js vue-cli配置   .npmignore 发包过滤文件   package.json npm包文件，发布公共组件来说，这里非常重要   packages 模块源文">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-08-11T08:00:53.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模块开发">
+<meta name="twitter:description" content="目的把一些常用的公共组件单独拿出来做成npm组件包，可以直接下载使用 好处 一套组件，多个项目用，减少重复开发 组件开发和项目开发可以同步进行 组件可以多个版本轻松升降级  结构   文件 描述      vue.config.js vue-cli配置   .npmignore 发包过滤文件   package.json npm包文件，发布公共组件来说，这里非常重要   packages 模块源文">
+  
+    <link rel="alternate" href="/atom.xml" title="Magic conch" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Magic conch</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">神奇海螺</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://thales-blog.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-module" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/03/module/" class="article-date">
+  <time datetime="2019-09-03T07:12:45.000Z" itemprop="datePublished">2019-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      模块开发
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>把一些常用的公共组件单独拿出来做成npm组件包，可以直接下载使用</p>
+<h1 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h1><ol>
+<li>一套组件，多个项目用，减少重复开发</li>
+<li>组件开发和项目开发可以同步进行</li>
+<li>组件可以多个版本轻松升降级</li>
+</ol>
+<h1 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h1><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>描述 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vue.config.js</td>
+<td>vue-cli配置</td>
+</tr>
+<tr>
+<td>.npmignore</td>
+<td>发包过滤文件</td>
+</tr>
+<tr>
+<td>package.json</td>
+<td>npm包文件，发布公共组件来说，这里非常重要</td>
+</tr>
+<tr>
+<td>packages</td>
+<td>模块源文件</td>
+</tr>
+<tr>
+<td>┣ popup</td>
+<td>弹窗组件</td>
+</tr>
+<tr>
+<td>┃ ┣ src</td>
+<td>源文件</td>
+</tr>
+<tr>
+<td>┃ ┃ ┗ popup.vue</td>
+<td>实际文件</td>
+</tr>
+<tr>
+<td>┃ ┗ index</td>
+<td>引导文件</td>
+</tr>
+<tr>
+<td>┣ module</td>
+<td><em>其他的模块都按照popup的方式添加</em></td>
+</tr>
+<tr>
+<td>┗ index.js</td>
+<td>主文件，配置加载内容，以及需要依赖</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>模块(编译后，用来publish)</td>
+</tr>
+<tr>
+<td>┣ dayu.umd.js</td>
+<td>糅合模式组件</td>
+</tr>
+<tr>
+<td>┣ dayu.umd.min.js</td>
+<td>糅合模式组件(最小化)</td>
+</tr>
+<tr>
+<td>┗ dayu.common.js</td>
+<td>commonjs模式组件</td>
+</tr>
+<tr>
+<td>examples</td>
+<td>模块示例，可以理解成以前的src</td>
+</tr>
+<tr>
+<td>┣ router</td>
+<td>路由</td>
+</tr>
+<tr>
+<td>┣ views</td>
+<td>页面</td>
+</tr>
+<tr>
+<td>┃ ┣ popup.vue</td>
+<td>弹窗展示页面</td>
+</tr>
+<tr>
+<td>┃ ┗ page</td>
+<td><em>其他页面文件按照都按照popup的方式添加</em></td>
+</tr>
+<tr>
+<td>┣ app.vue</td>
+<td></td>
+</tr>
+<tr>
+<td>┗ main.js</td>
+<td>入口文件</td>
+</tr>
+<tr>
+<td>public</td>
+<td>公共模板，给examples用的</td>
+</tr>
+</tbody>
+</table>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>以前做项目基本就是一个src为源文件，一个dist为生成文件<br>但是做组件，肯定要有packages为组件源文件，lib为组件的生成文件。可以理解为src和dist，生成组件就是build<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue-cli-service build --target lib --name dayu --dest lib packages/index.js</span><br></pre></td></tr></table></figure></p>
+<p>我们创造一个lib，名称为dayu，从packages/index.js文件创造<br>vue-cli-service的各种命令，可以去官网 <a href="https://cli.vuejs.org/zh/guide/cli-service.html#使用命令" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/cli-service.html#使用命令</a></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>examples是示例页面，就是专门做一个页面去调试一下packages的组件<br>以前dev和build都是编译src的内容，现在build是生成lib组件，dev是新打开一个示例页面去测试lib的组件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// examples/main.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span>;</span><br><span class="line"><span class="keyword">import</span> app <span class="keyword">from</span> <span class="string">'./app'</span>;</span><br><span class="line"><span class="keyword">import</span> dayu <span class="keyword">from</span> <span class="string">'../packages'</span>; <span class="comment">// 载入组件源码</span></span><br><span class="line"></span><br><span class="line">Vue.use(dayu); <span class="comment">// 应用组件</span></span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(app)</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>因为把src改成了examples，需要修改webpack的配置，我们使用的vue-cli，有专门的vue配置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  pages: &#123; <span class="comment">// 将 examples 目录添加为新的页面</span></span><br><span class="line">    index: &#123;</span><br><span class="line">      entry: <span class="string">'examples/main.js'</span>, <span class="comment">// page 的入口</span></span><br><span class="line">      template: <span class="string">'public/index.html'</span>, <span class="comment">// 模板来源</span></span><br><span class="line">      filename: <span class="string">'index.html'</span> <span class="comment">// 输出文件名</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  css: &#123; <span class="attr">extract</span>: <span class="literal">false</span> &#125;, <span class="comment">// css文件不分离</span></span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">    resolve: &#123;</span><br><span class="line">      alias: &#123;</span><br><span class="line">        <span class="string">'@'</span>: path.join(__dirname, <span class="string">'examples'</span>) <span class="comment">// @的根目录位置从之前的src改成了examples</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>vue.config的各种配置可以看 <a href="https://cli.vuejs.org/zh/config/#pages" target="_blank" rel="noopener">https://cli.vuejs.org/zh/config/#pages</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://thales-blog.github.io/2019/09/03/module/" data-id="ckdpoqr7u0008l8vv1mqicioe" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm-vue-module-publish/">npm vue module publish</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/12/transition/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          transition 过渡动画
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/02/eslint/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">eslint完整解析</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI-人工智能-Python-手动学深度学习/">AI 人工智能 Python 手动学深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation-动画-transition/">animation 动画 transition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-vue-module-publish/">npm vue module publish</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nrm/">nrm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI-人工智能-Python-手动学深度学习/" style="font-size: 10px;">AI 人工智能 Python 手动学深度学习</a> <a href="/tags/animation-动画-transition/" style="font-size: 10px;">animation 动画 transition</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/npm-vue-module-publish/" style="font-size: 10px;">npm vue module publish</a> <a href="/tags/nrm/" style="font-size: 10px;">nrm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/11/dive-into-deep-learning/">Dive into deep learning</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/12/transition/">transition 过渡动画</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/03/module/">模块开发</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/02/eslint/">eslint完整解析</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/05/cli/">脚手架</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Thales<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
